@@ -19,7 +19,7 @@ public class Account {
     private UUID id = UUID.randomUUID();
 
     @NotNull
-    private String login;
+    private String email;
 
     private String name;
 
@@ -37,5 +37,15 @@ public class Account {
 
     @OneToMany
     private List<Device> devices;
+
+    public Account(String email, String name, String password, int pinCode, Date registrationTime, Address address, List<Device> devices) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.pinCode = pinCode;
+        this.registrationTime = registrationTime;
+        this.address = address;
+        this.devices = devices;
+    }
 
 }

@@ -1,6 +1,7 @@
 package eu.ecct.synthesysterminal.entity;
 
 import com.sun.istack.NotNull;
+import eu.ecct.synthesysterminal.entity.models.Country;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,7 +17,8 @@ public class Address {
     private Long id;
 
     @NotNull
-    private String country;
+    @Enumerated(value = EnumType.STRING)
+    private Country country;
 
     @NotNull
     private String city;
@@ -27,7 +29,7 @@ public class Address {
     @NotNull
     private String zipCode;
 
-    public Address(String country, String city, String street, String zipCode) {
+    public Address(Country country, String city, String street, String zipCode) {
         this.country = country;
         this.city = city;
         this.street = street;
