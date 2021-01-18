@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/account/")
+@RequestMapping("/api/accounts")
 public class AccountController {
 
     private final AccountService accountService;

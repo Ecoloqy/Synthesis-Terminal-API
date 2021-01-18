@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/devices/")
+@RequestMapping("/api/devices")
 public class DeviceController {
 
     private final DeviceService deviceService;

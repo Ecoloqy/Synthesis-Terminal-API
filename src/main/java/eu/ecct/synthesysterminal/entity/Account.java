@@ -19,6 +19,10 @@ public class Account {
     private UUID id = UUID.randomUUID();
 
     @NotNull
+    @Enumerated(value = EnumType.STRING)
+    private Type accountType;
+
+    @NotNull
     private String email;
 
     private String name;
@@ -35,17 +39,22 @@ public class Account {
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Device> devices;
 
-    public Account(String email, String name, String password, int pinCode, Date registrationTime, Address address, List<Device> devices) {
+    public Account(String email, Type accountType, String name, String password, int pinCode, Date registrationTime, Address address, List<Device> devices) {
         this.email = email;
+        this.accountType = accountType;
         this.name = name;
         this.password = password;
         this.pinCode = pinCode;
         this.registrationTime = registrationTime;
         this.address = address;
         this.devices = devices;
+    }
+
+    public enum Type {
+        ADMIN, USER, DEVELOPER
     }
 
 }
