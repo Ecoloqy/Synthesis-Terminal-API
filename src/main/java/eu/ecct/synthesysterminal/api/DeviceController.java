@@ -1,4 +1,4 @@
-package eu.ecct.synthesysterminal.controller;
+package eu.ecct.synthesysterminal.api;
 
 import eu.ecct.synthesysterminal.entity.Device;
 import eu.ecct.synthesysterminal.service.DeviceService;
@@ -23,19 +23,19 @@ public class DeviceController {
         return deviceService.getAllDevices();
     }
 
-    @GetMapping("/{uuid}")
-    public Device getDevice(@PathVariable("uuid") UUID uuid) {
-        return deviceService.getDevice(uuid);
+    @GetMapping("/{id}")
+    public Device getDevice(@PathVariable("id") UUID id) {
+        return deviceService.getDeviceById(id);
     }
 
     @PostMapping
     public Device postDevice(@RequestBody Device device) {
-        return deviceService.postDevice(device);
+        return deviceService.saveDevice(device);
     }
 
     @PutMapping
     public Device putDevice(@RequestBody Device device) {
-        return deviceService.putDevice(device);
+        return deviceService.saveDevice(device);
     }
 
 }

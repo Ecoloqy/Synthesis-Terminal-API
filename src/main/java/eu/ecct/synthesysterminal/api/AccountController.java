@@ -1,4 +1,4 @@
-package eu.ecct.synthesysterminal.controller;
+package eu.ecct.synthesysterminal.api;
 
 import eu.ecct.synthesysterminal.entity.Account;
 import eu.ecct.synthesysterminal.service.AccountService;
@@ -11,31 +11,31 @@ import java.util.UUID;
 @RequestMapping("/api/accounts")
 public class AccountController {
 
-    private final AccountService accountService;
+    private final AccountService accountRepository;
 
     @Autowired
-    public AccountController(AccountService accountService) {
-        this.accountService = accountService;
+    public AccountController(AccountService accountRepository) {
+        this.accountRepository = accountRepository;
     }
 
     @GetMapping
     public Iterable<Account> getAllAccounts() {
-        return accountService.getAllAccounts();
+        return accountRepository.getAllAccount();
     }
 
-    @GetMapping("/{uuid}")
-    public Account getAccount(@PathVariable("uuid") UUID uuid) {
-        return accountService.getAccount(uuid);
+    @GetMapping("/{id}")
+    public Account getAccount(@PathVariable("id") UUID id) {
+        return accountRepository.getAccountById(id);
     }
 
     @PostMapping
     public Account postAccount(@RequestBody Account account) {
-        return accountService.postAccount(account);
+        return accountRepository.saveAccount(account);
     }
 
     @PutMapping
     public Account putAccount(@RequestBody Account account) {
-        return accountService.putAccount(account);
+        return accountRepository.saveAccount(account);
     }
 
 }

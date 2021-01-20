@@ -1,4 +1,4 @@
-package eu.ecct.synthesysterminal.controller;
+package eu.ecct.synthesysterminal.api;
 
 import eu.ecct.synthesysterminal.entity.Address;
 import eu.ecct.synthesysterminal.service.AddressService;
@@ -23,17 +23,17 @@ public class AddressController {
 
     @GetMapping("/{id}")
     public Address getAddress(@PathVariable("id") Long id) {
-        return addressService.getAddress(id);
+        return addressService.getAddressById(id);
     }
 
     @PostMapping
     public Address postAddress(@RequestBody Address address) {
-        return addressService.postAddress(address);
+        return addressService.saveAddress(address);
     }
 
     @PutMapping
     public Address putAddress(@RequestBody Address address) {
-        return addressService.putAddress(address);
+        return addressService.saveAddress(address);
     }
 
 }

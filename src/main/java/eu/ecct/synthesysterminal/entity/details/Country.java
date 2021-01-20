@@ -1,4 +1,4 @@
-package eu.ecct.synthesysterminal.entity.models;
+package eu.ecct.synthesysterminal.entity.details;
 
 public enum Country {
 

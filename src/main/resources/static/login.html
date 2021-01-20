@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="The HTML5 Site">
+    <meta name="author" content="Andrzej 'Ecoloqy' Szczepaniak">
+    <title>Login - Synthesis Terminal</title>
+
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/details.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <img id="avatar_big" src="img/guest_avatar.png" class="float-right" alt="...">
+    <h1>Sign in</h1>
+    <form action="/authorize" method="post" class="justify-content-center align-items-center">
+        <p>Username</p>
+        <input id="username" type="text" name="username"/>
+        <p>Password</p>
+        <input id="password" type="password" name="password"/>
+        <p>
+            <input type="submit" value="Sign in">
+        </p>
+        <p>
+            <a href="#">Login via Github account</a>
+        </p>
+        <p>
+            <a href="#">Login via Google account</a>
+        </p>
+        <p>
+            You don't have account? <a href="#">Sign up</a>
+        </p>
+    </form>
+</div>
+</body>
+</html>

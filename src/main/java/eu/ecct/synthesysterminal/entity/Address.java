@@ -1,7 +1,7 @@
 package eu.ecct.synthesysterminal.entity;
 
 import com.sun.istack.NotNull;
-import eu.ecct.synthesysterminal.entity.models.Country;
+import eu.ecct.synthesysterminal.entity.details.Country;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

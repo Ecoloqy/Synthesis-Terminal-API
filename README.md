@@ -1,4 +1,4 @@
-# IoT Synthesys Terminal API
+# IoT Synthesis Terminal API
 
 ### Reference Documentation
 
