@@ -1,8 +1,8 @@
 package eu.ecct.synthesysterminal.security;
 
-import eu.ecct.synthesysterminal.api.entity.account.Account;
-import eu.ecct.synthesysterminal.api.repository.account.AccountRepository;
-import eu.ecct.synthesysterminal.security.security.account.AccountDetails;
+import eu.ecct.synthesysterminal.account.AccountService;
+import eu.ecct.synthesysterminal.account.entity.Account;
+import eu.ecct.synthesysterminal.security.entity.AccountDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,16 +17,16 @@ import java.util.UUID;
 @Service
 public class AccountDetailsService implements UserDetailsService {
 
-    private final AccountRepository accountRepository;
+    private final AccountService accountService;
 
     @Autowired
-    public AccountDetailsService(AccountRepository accountRepository) {
-        this.accountRepository = accountRepository;
+    public AccountDetailsService(AccountService accountService) {
+        this.accountService = accountService;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<Account> account = accountRepository.findByUsername(username);
+        Optional<Account> account = accountService.getElementByUsername(username);
         return new AccountDetails(account.orElseThrow(
                 () -> new UsernameNotFoundException("Username not found in database."))
         );
@@ -36,7 +36,7 @@ public class AccountDetailsService implements UserDetailsService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() != null) {
             UUID accountId = ((AccountDetails) authentication.getPrincipal()).getUserId();
-            return accountRepository.getByIdAndArchived(accountId, false);
+            return accountService.getElementById(accountId);
         }
         return Optional.empty();
     }
