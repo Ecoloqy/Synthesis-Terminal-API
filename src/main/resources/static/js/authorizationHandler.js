@@ -8,7 +8,7 @@ export const authorizationHandler = {
         authorizationHandler.checkIfUserLoggedIn();
     },
     checkIfUserLoggedIn: () => {
-        $.get("/auth/logged", response => {
+        $.get("/api/auth", response => {
             if (response.details === null) {
                 userAvatar.attr("src", "");
                 settingsButton.attr("title", "");

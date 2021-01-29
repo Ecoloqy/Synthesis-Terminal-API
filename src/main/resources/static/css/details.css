@@ -21,3 +21,9 @@
     top: -9999px !important;
     left: -9999px !important;
 }
+
+table, table > tr, td {
+    border: solid 1px black;
+    margin: 1em;
+    padding: 1em;
+}
