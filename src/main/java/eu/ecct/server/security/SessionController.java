@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Map;
+
 @RestController
 public class SessionController {
 
@@ -23,7 +25,9 @@ public class SessionController {
     @GetMapping("/me")
     public Account getActiveAccount(@AuthenticationPrincipal OAuth2User principal) {
         if (principal == null) return null;
-        return accountService.getElementById(principal.getAttribute("id")).orElseThrow(
+        Map<String, Object> attributes = principal.getAttributes();
+        Long providerId = ((Integer) attributes.get("id")).longValue();
+        return accountService.getElementByProviderId(providerId).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 

@@ -13,12 +13,10 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final SessionAuthenticationSuccessListener successHandler;
     private final String frontUrl;
 
     @Autowired
-    public WebSecurityConfig(SessionAuthenticationSuccessListener successHandler, Environment environment) {
-        this.successHandler = successHandler;
+    public WebSecurityConfig(Environment environment) {
         this.frontUrl = environment.getProperty("server.address.frontend");
     }
 
