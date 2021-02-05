@@ -1,5 +1,6 @@
 package eu.ecct.server.arduino.key.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import eu.ecct.server.api.common.entity.EntityOperations;
 import lombok.Data;
@@ -26,6 +27,7 @@ public class Key implements EntityOperations<Long> {
     private UUID value;
 
     @NotNull
+    @JsonIgnore
     private boolean active = true;
 
     public Key(String description, UUID value) {

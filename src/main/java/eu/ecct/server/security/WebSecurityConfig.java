@@ -24,12 +24,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/me").permitAll()
+                .antMatchers("/api/me/**").permitAll()
+                .antMatchers("/api/login/**").permitAll()
+                .antMatchers("/api/resources/**").permitAll()
+                .antMatchers("/connection/**").permitAll()
+                .antMatchers("/oauth2/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .logout()
                 .logoutSuccessUrl(frontUrl)
-                .logoutUrl("/logout")
+                .logoutUrl("/api/logout").permitAll()
                 .logoutSuccessUrl(frontUrl)
                 .deleteCookies("JSESSIONID")
                 .and()

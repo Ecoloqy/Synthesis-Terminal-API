@@ -2,6 +2,7 @@ package eu.ecct.server.api.common.controller;
 
 import eu.ecct.server.api.common.service.RestApiGetByUUIDServiceOperations;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -18,6 +19,7 @@ public abstract class AbstractAccountDependentController<T, V> implements Accoun
     @Override
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("@accountOwnerValidator.isOwnerIdEqualUriId(#userId) or hasRole('ADMIN')")
     public Iterable<T> getAllElements(@PathVariable UUID userId) {
         return service.getAllElements(userId);
     }
@@ -25,6 +27,7 @@ public abstract class AbstractAccountDependentController<T, V> implements Accoun
     @Override
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("@accountOwnerValidator.isOwnerIdEqualUriId(#userId) or hasRole('ADMIN')")
     public T getElement(@PathVariable UUID userId, @PathVariable V id) {
         return service.getElementById(userId, id).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
@@ -33,6 +36,7 @@ public abstract class AbstractAccountDependentController<T, V> implements Accoun
     @Override
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("@accountOwnerValidator.isOwnerIdEqualUriId(#userId) or hasRole('ADMIN')")
     public void saveNewElement(@RequestBody T element, @PathVariable UUID userId) {
         service.addNewElement(element, userId);
     }
@@ -40,6 +44,7 @@ public abstract class AbstractAccountDependentController<T, V> implements Accoun
     @Override
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PreAuthorize("@accountOwnerValidator.isOwnerIdEqualUriId(#userId) or hasRole('ADMIN')")
     public void updateElement(@RequestBody T element, @PathVariable UUID userId, @PathVariable V id) {
         service.updateElement(element);
     }
@@ -47,6 +52,7 @@ public abstract class AbstractAccountDependentController<T, V> implements Accoun
     @Override
     @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PreAuthorize("@accountOwnerValidator.isOwnerIdEqualUriId(#userId) or hasRole('ADMIN')")
     public void patchElement(@RequestBody T element, @PathVariable UUID userId, @PathVariable V id) {
         service.patchElement(element, id);
     }
@@ -54,6 +60,7 @@ public abstract class AbstractAccountDependentController<T, V> implements Accoun
     @Override
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("@accountOwnerValidator.isOwnerIdEqualUriId(#userId) or hasRole('ADMIN')")
     public void deleteElement(@PathVariable UUID userId, @PathVariable V id) {
         service.deleteElement(id);
     }

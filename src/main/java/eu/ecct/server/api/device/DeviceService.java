@@ -16,7 +16,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-class DeviceService extends AbstractRestApiGetByUUIDService<Device, UUID> implements DeviceServiceOperations {
+public class DeviceService extends AbstractRestApiGetByUUIDService<Device, UUID> implements DeviceServiceOperations {
 
     @Autowired
     public DeviceService(RestApiRepository<Device, UUID> repository,
@@ -66,8 +66,9 @@ class DeviceService extends AbstractRestApiGetByUUIDService<Device, UUID> implem
     public void patchElement(Device device, UUID id) {
         Device oldDevice = repository.findById(id).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        oldDevice.setModified(device.isModified());
+        oldDevice.setDeviceActivated(device.isDeviceActivated());
         if (device.getPins() != null) {
-            oldDevice.setModified(true);
             oldDevice.setPins(device.getPins());
         }
         if (device.getName() != null) oldDevice.setName(device.getName());

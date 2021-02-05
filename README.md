@@ -2,11 +2,10 @@ IoT Synthesis Terminal API
 
 ### Reference Documentation
 
+* [Official Planning](https://reserveplan.atlassian.net/browse/STA)
 * [Official OpenAPI documentation](https://)
-* [Official Backlog of product](https://)
 
-### Other microservices
+### Other services
 
-* [Frontend - Angular CLI](http://)
-* [Backend - Java Spring + SocketIO connection](http://)
-* [Microcontroller - Arduino + SocketIO connection](http://)
+* [Frontend - Angular CLI](https://github.com/Ecoloqy/Synthesis-Terminal-Front)
+* [Backend - Java Spring](https://github.com/Ecoloqy/Synthesis-Terminal-API)

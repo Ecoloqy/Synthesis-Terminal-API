@@ -1,5 +1,6 @@
 package eu.ecct.server.api.address.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import eu.ecct.server.api.common.entity.EntityOperations;
 import lombok.Data;
@@ -30,6 +31,7 @@ public class Address implements EntityOperations<Long> {
     private String zipCode;
 
     @NotNull
+    @JsonIgnore
     private boolean active = true;
 
     public Address(Country country, String city, String street, String zipCode) {

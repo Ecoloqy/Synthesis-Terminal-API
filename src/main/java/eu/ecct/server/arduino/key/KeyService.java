@@ -43,8 +43,8 @@ public class KeyService implements KeyServiceOperations {
     }
 
     @Override
-    public Optional<Key> getKeyByValue(UUID value) {
-        return repository.findByValue(value);
+    public Optional<Key> findByValue(UUID value) {
+        return repository.findByValueAndActive(value, true);
     }
 
 }

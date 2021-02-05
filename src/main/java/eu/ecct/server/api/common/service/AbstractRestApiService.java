@@ -13,12 +13,12 @@ public abstract class AbstractRestApiService<T extends EntityOperations<V>, V> e
 
     @Override
     public Iterable<T> getAllElements() {
-        return repository.getAllByActive(false);
+        return repository.getAllByActive(true);
     }
 
     @Override
     public Optional<T> getElementById(V id) {
-        return repository.getByIdAndActive(id, false);
+        return repository.getByIdAndActive(id, true);
     }
 
     @Override

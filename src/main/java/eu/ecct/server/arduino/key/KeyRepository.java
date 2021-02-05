@@ -11,6 +11,6 @@ import java.util.UUID;
 @Repository
 interface KeyRepository extends JpaRepository<Key, Long> {
 
-    Optional<Key> findByValue(UUID value);
+    Optional<Key> findByValueAndActive(UUID value, boolean active);
 
 }

@@ -12,8 +12,8 @@ import java.util.UUID;
 @RequestMapping("/api/accounts/{userId}/devices")
 public class DeviceController extends AbstractAccountDependentController<Device, UUID> implements DeviceControllerOperations {
 
-    public DeviceController(RestApiGetByUUIDServiceOperations<Device, UUID> addressService) {
-        super(addressService);
+    public DeviceController(RestApiGetByUUIDServiceOperations<Device, UUID> service) {
+        super(service);
     }
 
 }

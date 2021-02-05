@@ -1,5 +1,6 @@
 package eu.ecct.server.api.pin.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import eu.ecct.server.api.common.entity.EntityOperations;
 import lombok.Data;
@@ -25,6 +26,7 @@ public class Pin implements EntityOperations<Long> {
     private PinType pinType;
 
     @NotNull
+    @JsonIgnore
     private boolean active = true;
 
     public Pin(int pinId, String switchName, boolean switchStatus, double sensorValue, PinType pinType) {

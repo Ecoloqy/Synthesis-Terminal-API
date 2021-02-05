@@ -1,5 +1,6 @@
 package eu.ecct.server.api.account.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import eu.ecct.server.api.address.entity.Address;
 import eu.ecct.server.api.common.entity.EntityOperations;
@@ -21,7 +22,7 @@ public class Account implements EntityOperations<UUID> {
 
     @NotNull
     private String username;
-
+    
     private String email;
 
     @NotNull
@@ -36,6 +37,7 @@ public class Account implements EntityOperations<UUID> {
     private UserRole userRole;
 
     @NotNull
+    @JsonIgnore
     private boolean active = true;
 
     @NotNull

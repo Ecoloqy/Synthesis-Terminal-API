@@ -16,6 +16,6 @@ interface KeyServiceOperations {
 
     void deleteKey(Long id);
 
-    Optional<Key> getKeyByValue(UUID value);
+    Optional<Key> findByValue(UUID value);
 
 }

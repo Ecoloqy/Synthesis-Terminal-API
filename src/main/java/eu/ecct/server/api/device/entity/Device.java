@@ -37,15 +37,18 @@ public class Device implements EntityOperations<UUID> {
     private boolean deviceActivated = false;
 
     @NotNull
+    @JsonIgnore
     private boolean active = true;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Pin> pins;
 
-    public Device(String name, Long address, String password, List<Pin> pins) {
+    public Device(String name, Long address, String password, boolean modified, boolean deviceActivated, List<Pin> pins) {
         this.name = name;
         this.address = address;
         this.password = password;
+        this.modified = modified;
+        this.deviceActivated = deviceActivated;
         this.pins = pins;
     }
 
